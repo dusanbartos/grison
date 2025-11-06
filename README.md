@@ -1,5 +1,7 @@
 # GRISON
 
+![status](https://github.com/dusanbartos/grison/actions/workflows/android.yml/badge.svg?branch=master)
+
 ![grison image](./grison.jpg)
 
 > A grison (/ˈɡrɪzən/, /ˈɡraɪsən/) is any mustelid in the genus Galictis.
@@ -60,6 +62,9 @@ data flow.
 
 The Data is stored in a local Room Database to make card operations persistent between app runs.
 
+App uses Dagger/Hilt to handle Dependency Injection. If this was to be a KMP project I would choose
+Koin instead, but in pure Android, Hilt gives better compile-time safety.
+
 Error handling is simple - using just a `kotlin.Result` wrapper for operations that can fail.
 A more sophisticated approach would require a set of custom return types, i.e. a sealed interface
 with success type and multiple failure subtypes based on the failure cause.
@@ -69,7 +74,9 @@ which could one consider better or worse for specific projects. An example would
 interface approach, where state changes follow strict type-safe transitions. For a project of this
 scale I chose to use a data class. Nothing more, nothing less behind this decision.
 
-Note: Some composables are reused from my previous projects
+Note: Some composables are reused from my previous projects.
+
+Project uses a simple CI configured in Github Actions which publishes APK file and test reports into artifacts.
 
 ## Architecture
 
